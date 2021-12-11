@@ -23,7 +23,6 @@ public class Savings {
         return savings;
     }
 
-
     /**
      * The setter
      * 
