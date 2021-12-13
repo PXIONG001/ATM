@@ -18,11 +18,18 @@ public class App
      */
     public static void main(String[] args) 
     {
+
+        Integer user_input_for_account;
+        Double user_withdraw;
+        Double withdraw;
+        Double user_deposit;
+        Double deposit;
         
         Scanner sc = new Scanner(System.in);    
         Checking checking = new Checking(43263.90);    
         Savings saving_total = new Savings(3023.01);
         Boolean loop = true;
+        
 
         
 
@@ -38,107 +45,111 @@ public class App
 
             switch (user_input) {
 
+                case "1":
+                case "checking":
                 case "Checking":
-                    Boolean loop_1 = true;
+                    Boolean checking_loop = true;
                     
-                    while (loop_1) 
+                    while (checking_loop) 
                     {
                         System.out.println("What would you like to do today?\n");
                         System.out.println("1. Withdraw\n\n2. Deposit\n\n3. See Balance\n\n4. Exit\n");
                         System.out.println("Type in the number:");
                     
-                        Integer user_input_for_savings = sc.nextInt();
+                        user_input_for_account = sc.nextInt();
 
-                        switch (user_input_for_savings) 
+                        switch (user_input_for_account) 
                         {
                             case 1:
                                 System.out.println("\nHow much would you like to withdraw?\n");
                                 
-                                Double user_withdraw = sc.nextDouble();
-                                Double withdraw = checking.getCheckingBalance() - user_withdraw;
-                                saving_total.setSavingsBalance(withdraw);
+                                user_withdraw = sc.nextDouble();
+                                withdraw = checking.getCheckingBalance() - user_withdraw;
+                                checking.setCheckingBalance(withdraw);
     
-                                System.out.println("You have withdrawn " + user_withdraw + ". You now have " + checking.getCheckingBalance());
+                                System.out.println("You have withdrawn " + user_withdraw + ". You now have " + checking.getCheckingBalance() + "\n");
                                 
                                 break;
     
                             case 2:
                                 System.out.println("\nHow much would you like to deposit?\n");
                                 
-                                Double user_deposit = sc.nextDouble();
-                                Double deposit = saving_total.getSavingsBalance() + user_deposit;
-                                saving_total.setSavingsBalance(deposit);
+                                user_deposit = sc.nextDouble();
+                                deposit = checking.getCheckingBalance() + user_deposit;
+                                checking.setCheckingBalance(deposit);
                             
-                                System.out.println("You have deposited $" + user_deposit + ". You now have $" + saving_total.getSavingsBalance());
+                                System.out.println("You have deposited $" + user_deposit + ". You now have $" + checking.getCheckingBalance() + "\n");
     
                                 break;
     
                             case 3:
                             
-                                System.out.println("Balance: " + checking.getCheckingBalance());
+                                System.out.println("Balance: " + checking.getCheckingBalance() + "\n");
                                 
                                 break;
 
                             case 4:
-                                loop_1 = false;
+                                checking_loop = false;
                                 break;
     
                             default:
-                                System.out.println("Don't fucking waste my time!");
+                                System.out.println("Invalid input! Please type in a number to proceed: \n");
                                 break;
                         }
                             
                     }
 
                     break;
-        
+                
+                case "2":
+                case "savings":
                 case "Savings":
-                    Boolean loop_2 = true;
+                    Boolean savings_loop = true;
                     
-                    while (loop_2) 
+                    while (savings_loop) 
                     {
                         System.out.println("What would you like to do today?\n");
-                        System.out.println("1. Withdraw\n\n2. Deposit\n\n3. See Balance\n\nExit\n");
+                        System.out.println("1. Withdraw\n\n2. Deposit\n\n3. See Balance\n\n4. Exit\n");
                         System.out.println("Type in the number:");
                     
-                        Integer user_input_for_savings = sc.nextInt();
+                        user_input_for_account = sc.nextInt();
 
-                        switch (user_input_for_savings) 
+                        switch (user_input_for_account) 
                         {
                             case 1:
                                 System.out.println("\nHow much would you like to withdraw?\n");
                                 
-                                Double user_withdraw = sc.nextDouble();
-                                Double withdraw = saving_total.getSavingsBalance() - user_withdraw;
+                                user_withdraw = sc.nextDouble();
+                                withdraw = saving_total.getSavingsBalance() - user_withdraw;
                                 saving_total.setSavingsBalance(withdraw);
     
-                                System.out.println("You have withdrawn " + user_withdraw + ". You now have " + saving_total.getSavingsBalance());
+                                System.out.println("You have withdrawn " + user_withdraw + ". You now have " + saving_total.getSavingsBalance() + "\n");
                                 
                                 break;
     
                             case 2:
                                 System.out.println("\nHow much would you like to deposit?\n");
                                 
-                                Double user_deposit = sc.nextDouble();
-                                Double deposit = saving_total.getSavingsBalance() + user_deposit;
+                                user_deposit = sc.nextDouble();
+                                deposit = saving_total.getSavingsBalance() + user_deposit;
                                 saving_total.setSavingsBalance(deposit);
                             
-                                System.out.println("You have deposited $" + user_deposit + ". You now have $" + saving_total.getSavingsBalance());
+                                System.out.println("You have deposited $" + user_deposit + ". You now have $" + saving_total.getSavingsBalance() + "\n");
     
                                 break;
     
                             case 3:
                             
-                                System.out.println("Balance: " + saving_total.getSavingsBalance());
+                                System.out.println("Balance: " + saving_total.getSavingsBalance() + "\n");
                                 
                                 break;
 
                             case 4:
-                                loop_2 = false;
+                                savings_loop = false;
                                 break;
     
                             default:
-                                System.out.println("Don't fucking waste my time!");
+                            System.out.println("Invalid input! Please type in a number to proceed: \n");
                                 break;
                         }
                             
@@ -146,12 +157,14 @@ public class App
 
                     break;
 
+                case "3":
+                case "exit":
                 case "Exit":
                     loop = false;
                     break;
 
                 default:
-                    System.out.println("Check problem above!");
+                    System.out.println("Invalid input! Please type in the following input: ");
                     break;
             }
 
