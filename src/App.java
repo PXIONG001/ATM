@@ -1,3 +1,4 @@
+// import Scanner
 import java.util.*;
 
 /**
@@ -19,37 +20,53 @@ public class App
     public static void main(String[] args) 
     {
 
+        // User input variable used in nest swtch cases
         Integer user_input_for_account;
+
+        // Withdraw variable used for Checking and Savings switch cases
         Double user_withdraw;
         Double withdraw;
+
+        // Deposit variable used for Checking and Savings switch cases
         Double user_deposit;
         Double deposit;
         
-        Scanner sc = new Scanner(System.in);    
+        // Takes user input
+        Scanner sc = new Scanner(System.in);   
+        
+        // Creates a new object with checking
         Checking checking = new Checking(43263.90);    
+
+        // Creates a new object with savings
         Savings saving_total = new Savings(3023.01);
+
+        // Variable is used for the first loop
         Boolean loop = true;
-        
 
-        
-
+        //TODO #1
+        // This is the first implementation of the login. Later on, this will be modified to work with the database. 
         System.out.println("Please enter your name to identify yourself! \n");
         
         System.out.println("Welcome " + sc.nextLine() + "! Which account would you like to access today?\n");
 
+        // The first continous loop for the user
         while (loop) 
         {
 
             System.out.println("Checking\n\nSavings\n\nExit\n");
             String user_input = sc.next();
 
+            // Switch case for accessing different accounts.
             switch (user_input) {
 
+                // Checking
                 case "1":
                 case "checking":
                 case "Checking":
                     Boolean checking_loop = true;
                     
+                    // Nested loop. The nested continous loop keeps asking the users what they want to do
+                    // until they input the command: Exit.
                     while (checking_loop) 
                     {
                         System.out.println("What would you like to do today?\n");
@@ -58,8 +75,11 @@ public class App
                     
                         user_input_for_account = sc.nextInt();
 
+                        // Nest Switch case. The user gives an input on which action they would like to
+                        // proceed in their checking account
                         switch (user_input_for_account) 
                         {
+                            // Withdraw
                             case 1:
                                 System.out.println("\nHow much would you like to withdraw?\n");
                                 
@@ -70,7 +90,8 @@ public class App
                                 System.out.println("You have withdrawn " + user_withdraw + ". You now have " + checking.getCheckingBalance() + "\n");
                                 
                                 break;
-    
+                            
+                            // Deposit
                             case 2:
                                 System.out.println("\nHow much would you like to deposit?\n");
                                 
@@ -82,16 +103,19 @@ public class App
     
                                 break;
     
+                            // See Balance
                             case 3:
                             
                                 System.out.println("Balance: " + checking.getCheckingBalance() + "\n");
                                 
                                 break;
 
+                            // Exit
                             case 4:
                                 checking_loop = false;
                                 break;
     
+                            // Ask user to type in one of the following commands
                             default:
                                 System.out.println("Invalid input! Please type in a number to proceed: \n");
                                 break;
@@ -101,11 +125,14 @@ public class App
 
                     break;
                 
+                // Savings
                 case "2":
                 case "savings":
                 case "Savings":
                     Boolean savings_loop = true;
                     
+                    // Nested loop. The nested continous loop keeps asking the users what they want to do
+                    // until they input the command: Exit.
                     while (savings_loop) 
                     {
                         System.out.println("What would you like to do today?\n");
@@ -114,8 +141,11 @@ public class App
                     
                         user_input_for_account = sc.nextInt();
 
+                        // Nest Switch case. The user gives an input on which action they would like to
+                        // proceed in their savings account
                         switch (user_input_for_account) 
                         {
+                            // Withdraw
                             case 1:
                                 System.out.println("\nHow much would you like to withdraw?\n");
                                 
@@ -127,6 +157,7 @@ public class App
                                 
                                 break;
     
+                            // Deposit
                             case 2:
                                 System.out.println("\nHow much would you like to deposit?\n");
                                 
@@ -138,16 +169,19 @@ public class App
     
                                 break;
     
+                            // See Balance
                             case 3:
                             
                                 System.out.println("Balance: " + saving_total.getSavingsBalance() + "\n");
                                 
                                 break;
 
+                            // Exit
                             case 4:
                                 savings_loop = false;
                                 break;
     
+                            // Ask user to type in one of the following commands
                             default:
                             System.out.println("Invalid input! Please type in a number to proceed: \n");
                                 break;
@@ -156,13 +190,15 @@ public class App
                     }
 
                     break;
-
+                
+                // Exit
                 case "3":
                 case "exit":
                 case "Exit":
                     loop = false;
                     break;
 
+                // If the user does not type in any of the inputs
                 default:
                     System.out.println("Invalid input! Please type in the following input: ");
                     break;
@@ -170,6 +206,7 @@ public class App
 
         }
 
+        // Closes the scanner
         sc.close();
     }
 }
