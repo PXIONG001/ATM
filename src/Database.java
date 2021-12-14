@@ -1,6 +1,12 @@
 // Import ResultSet, Connection, DriverManager, and Statement.
 import java.sql.*;
 
+// Import Wini
+import org.ini4j.*;
+
+// Import File
+import java.io.File;
+
 /**
  * Checking.java will display information on your checking
  * account and allow you to withdraw or deposit money.
@@ -19,12 +25,15 @@ public class Database {
      * @throws Exception The exception catches if there is no class that exist, or no connection cannot be made.
      */
     public static void main(String[] args) throws Exception {
+
+        Wini ini = new Wini(new File("C:\\Users\\pengs\\.vscode\\Java-VSCode_Project\\ATM\\files\\my_INI_file.ini"));
+
         // Connection to the data base. 
-        String url = "jdbc:mysql://localhost:3306/users";
+        String url = ini.get("database", "url");
         // The username to the database.
-        String user = "";
+        String user = ini.get("database", "username");
         // The password to the database.
-        String password = "";
+        String password = ini.get("database", "password");
 
         // Tries to execute the code.
         try {
