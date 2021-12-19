@@ -1,6 +1,9 @@
 // Import ResultSet, Connection, DriverManager, and Statement.
 import java.sql.*;
 
+// Import ArrayList.
+import java.util.ArrayList;
+
 // Import Wini
 import org.ini4j.*;
 
@@ -45,16 +48,43 @@ public class Database {
             Statement stmt = con.createStatement();
             // To execute the SQL commands.
             ResultSet rs = stmt.executeQuery("select * from owners;");
-
+            ArrayList<Account> accounts = new ArrayList<>();
+            
             // Loops through the database to get the information. 
             while (rs.next()) {
+                // Set a new account class.
+                Account user_account = new Account();
                 // String variable to store information from the database.
-                String users = "";
-                for (int i = 1; i <= 11; i++) {
-                    // Information from database is stored into users.
-                    users += rs.getString(i) + " | ";
-                }
-                System.out.println(users);
+                user_account.setID(rs.getInt("ID"));
+                user_account.setName(rs.getString("Username"));
+                user_account.setPassword(rs.getString("Password"));
+                user_account.setBirthdate(rs.getDate("Birthdate"));
+                user_account.setFirstName(rs.getString("First Name"));
+                user_account.setLastName(rs.getString("Last Name"));
+                user_account.setSocialSecurity(rs.getInt("Social Security"));
+                user_account.setRoutingNumber(rs.getInt("Routing Number"));
+                user_account.setAccountNumber(rs.getInt("Account Number"));
+                user_account.setCheckingBalance(rs.getDouble("Checking Balance"));
+                user_account.setSavingsBalance(rs.getDouble("Savings Balance"));
+
+                accounts.add(user_account);
+                
+            }
+
+            for (Account obj : accounts)
+            {
+                System.out.println("ID: " + obj.getID() + ",");
+                System.out.println("Username: " + obj.getName());
+                System.out.println("Password: " + obj.getPassword());
+                System.out.println("Birthdate: " + obj.getBirthdate());
+                System.out.println("First Name: " + obj.getFirstName());
+                System.out.println("Last Name: " + obj.getLastName());
+                System.out.println("Social Security: " + obj.getSocialSecurity());
+                System.out.println("Routing Number: " + obj.getRoutingNumber());
+                System.out.println("Account Number: " + obj.getAccountNumber());
+                System.out.println("Checking Balance: " + obj.getCheckingBalance());
+                System.out.println("Savings Balance: " + obj.getSavingsBalance());
+                System.out.println();
             }
 
             // Closes the connection to the database.
