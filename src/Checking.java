@@ -4,11 +4,17 @@
  * 
  * @author Pengshing Xiong
  * @version 1.0
- * @since 2021-11-30
+ * @since 2021-11-30 
  */
 public class Checking {
     private Double checking;
 
+    /**
+     * 
+     * The Constructor
+     * 
+     * @param checking The user's checking balance
+     */
     public Checking(Double checking) {
         this.checking = checking;
     }
