@@ -3,6 +3,7 @@ import java.sql.*;
 
 // Import ArrayList.
 import java.util.ArrayList;
+import java.util.Date;
 
 // Import Wini
 import org.ini4j.*;
@@ -20,6 +21,18 @@ import java.io.File;
  */
 public class Database {
 
+    ArrayList<Integer> user_id = new ArrayList<>();
+    ArrayList<String> users_username = new ArrayList<>();
+    ArrayList<String> user_password = new ArrayList<>();
+    ArrayList<Date> user_birthdate = new ArrayList<>();
+    ArrayList<String> user_first_name = new ArrayList<>();
+    ArrayList<String> user_last_name = new ArrayList<>();
+    ArrayList<Integer> user_social_security = new ArrayList<>();
+    ArrayList<Integer> user_routing_number = new ArrayList<>();
+    ArrayList<Integer> user_account_number = new ArrayList<>();
+    ArrayList<Double> user_checking_balance = new ArrayList<>();
+    ArrayList<Double> user_savings_balance = new ArrayList<>();
+
     /**
      * 
      * The main driver to connect to the user information. 
@@ -27,23 +40,25 @@ public class Database {
      * @param args Does not take any user input.
      * @throws Exception The exception catches if there is no class that exist, or no connection cannot be made.
      */
-    public static void main(String[] args) throws Exception {
-
-        Wini ini = new Wini(new File("C:\\Users\\pengs\\.vscode\\Java-VSCode_Project\\ATM\\files\\my_INI_file.ini"));
-
-        // Connection to the data base. 
-        String url = ini.get("database", "url");
-        // The username to the database.
-        String user = ini.get("database", "username");
-        // The password to the database.
-        String password = ini.get("database", "password");
-
+    public void connect() 
+    {
+        // try-catch
         // Tries to execute the code.
         try {
+            // INI file to access sensitive information
+            Wini ini = new Wini(new File("C:\\Users\\pengs\\.vscode\\Java-VSCode_Project\\ATM\\files\\my_INI_file.ini"));
+
+            // Connection to the data base. 
+            String url = ini.get("database", "url");
+            // The username to the database.
+            String username = ini.get("database", "username");
+            // The password to the database.
+            String password = ini.get("database", "password");
+
             // Connector/J
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Connection to the database.
-            Connection con = DriverManager.getConnection(url, user, password);
+            Connection con = DriverManager.getConnection(url, username, password);
             // Statements to utilize SQL commands.
             Statement stmt = con.createStatement();
             // To execute the SQL commands.
@@ -73,19 +88,20 @@ public class Database {
 
             for (Account obj : accounts)
             {
-                System.out.println("ID: " + obj.getID() + ",");
-                System.out.println("Username: " + obj.getName());
-                System.out.println("Password: " + obj.getPassword());
-                System.out.println("Birthdate: " + obj.getBirthdate());
-                System.out.println("First Name: " + obj.getFirstName());
-                System.out.println("Last Name: " + obj.getLastName());
-                System.out.println("Social Security: " + obj.getSocialSecurity());
-                System.out.println("Routing Number: " + obj.getRoutingNumber());
-                System.out.println("Account Number: " + obj.getAccountNumber());
-                System.out.println("Checking Balance: " + obj.getCheckingBalance());
-                System.out.println("Savings Balance: " + obj.getSavingsBalance());
-                System.out.println();
+                user_id.add(obj.getID());
+                users_username.add(obj.getName());
+                user_password.add(obj.getPassword());
+                user_birthdate.add(obj.getBirthdate());
+                user_first_name.add(obj.getFirstName());
+                user_last_name.add(obj.getLastName());
+                user_social_security.add(obj.getSocialSecurity());
+                user_routing_number.add(obj.getRoutingNumber());
+                user_account_number.add(obj.getAccountNumber());
+                user_checking_balance.add(obj.getCheckingBalance());
+                user_savings_balance.add(obj.getSavingsBalance());
             }
+
+            System.out.println(user_checking_balance.get(1));
 
             // Closes the connection to the database.
             con.close();
@@ -96,5 +112,11 @@ public class Database {
             System.out.println(e);
         }
 
+    }
+
+    public static void main(String[] args) 
+    {
+        Database database = new Database();
+        database.connect();
     }
 }
