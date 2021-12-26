@@ -3,7 +3,6 @@ import java.sql.*;
 
 // Import ArrayList.
 import java.util.ArrayList;
-import java.util.Date;
 
 // Import Wini
 import org.ini4j.*;
@@ -20,18 +19,8 @@ import java.io.File;
  * @since 2021-12-09
  */
 public class Database {
+    ArrayList<Account> accounts = new ArrayList<>();
 
-    ArrayList<Integer> user_id = new ArrayList<>();
-    ArrayList<String> users_username = new ArrayList<>();
-    ArrayList<String> user_password = new ArrayList<>();
-    ArrayList<Date> user_birthdate = new ArrayList<>();
-    ArrayList<String> user_first_name = new ArrayList<>();
-    ArrayList<String> user_last_name = new ArrayList<>();
-    ArrayList<Integer> user_social_security = new ArrayList<>();
-    ArrayList<Integer> user_routing_number = new ArrayList<>();
-    ArrayList<Integer> user_account_number = new ArrayList<>();
-    ArrayList<Double> user_checking_balance = new ArrayList<>();
-    ArrayList<Double> user_savings_balance = new ArrayList<>();
 
     /**
      * 
@@ -40,7 +29,7 @@ public class Database {
      * @param args Does not take any user input.
      * @throws Exception The exception catches if there is no class that exist, or no connection cannot be made.
      */
-    public void connect() 
+    public ArrayList<Account> connect() 
     {
         // try-catch
         // Tries to execute the code.
@@ -63,7 +52,7 @@ public class Database {
             Statement stmt = con.createStatement();
             // To execute the SQL commands.
             ResultSet rs = stmt.executeQuery("select * from owners;");
-            ArrayList<Account> accounts = new ArrayList<>();
+            
             
             // Loops through the database to get the information. 
             while (rs.next()) {
@@ -86,31 +75,19 @@ public class Database {
                 
             }
 
-            for (Account obj : accounts)
-            {
-                user_id.add(obj.getID());
-                users_username.add(obj.getName());
-                user_password.add(obj.getPassword());
-                user_birthdate.add(obj.getBirthdate());
-                user_first_name.add(obj.getFirstName());
-                user_last_name.add(obj.getLastName());
-                user_social_security.add(obj.getSocialSecurity());
-                user_routing_number.add(obj.getRoutingNumber());
-                user_account_number.add(obj.getAccountNumber());
-                user_checking_balance.add(obj.getCheckingBalance());
-                user_savings_balance.add(obj.getSavingsBalance());
-            }
-
-            System.out.println(user_checking_balance.get(1));
 
             // Closes the connection to the database.
             con.close();
+
+            
         } 
         
         // Catches the Exception.
         catch (Exception e) {
             System.out.println(e);
         }
+
+        return accounts;
 
     }
 
