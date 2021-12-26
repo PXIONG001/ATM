@@ -1,4 +1,4 @@
-# ATM/Banking
+# Banking
 This project is creating a ATM system that allows you to check your bank account. This project is based on Java, and I plan on replicating this system into C++ later on. 
 
 ## The Structure
