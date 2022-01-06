@@ -63,7 +63,7 @@ public class Account {
      * 
      * @return Returns the user's name
      */
-    public String getName() {
+    public String getUsername() {
         return username;
     }
 
@@ -73,7 +73,7 @@ public class Account {
      * 
      * @param name The user's name
      */
-    public void setName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

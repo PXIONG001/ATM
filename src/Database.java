@@ -60,7 +60,7 @@ public class Database {
                 Account user_account = new Account();
                 // String variable to store information from the database.
                 user_account.setID(rs.getInt("ID"));
-                user_account.setName(rs.getString("Username"));
+                user_account.setUsername(rs.getString("Username"));
                 user_account.setPassword(rs.getString("Password"));
                 user_account.setBirthdate(rs.getDate("Birthdate"));
                 user_account.setFirstName(rs.getString("First Name"));
@@ -75,11 +75,8 @@ public class Database {
                 
             }
 
-
             // Closes the connection to the database.
             con.close();
-
-            
         } 
         
         // Catches the Exception.
