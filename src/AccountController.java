@@ -131,7 +131,7 @@ public class AccountController {
         // Where the username's index number is located.
         int where_the_index = index_string.indexOf(username);
 
-        if (where_the_index == 0)
+        if (where_the_index == 0 || where_the_index == null)
         {
             return 0;
         }
@@ -195,19 +195,5 @@ public class AccountController {
         }
 
         return statement;
-    }
-
-    public static void main(String[] args)
-    {
-        AccountController control = new AccountController();
-        if (control.check_username("MJ"))
-        {
-            System.out.println("Welcome");
-        }
-
-        else
-        {
-            System.out.println("Blah!");
-        }
     }
 }
