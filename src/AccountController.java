@@ -13,18 +13,28 @@ import java.util.Date;
  */
 public class AccountController {
 
+    // Database variable
     Database database = new Database();
 
-
-
+    // Array list for user's birthdate
     ArrayList<Date> user_birthdate = new ArrayList<>();
 
-
+    // Array list for user's checking balance
     ArrayList<Double> user_checking_balance = new ArrayList<>();
+
+    // Array list for user's saving's balance
     ArrayList<Double> user_savings_balance = new ArrayList<>();
 
+    // Boolean for login
     boolean statement = false;
 
+    /**
+     * 
+     * The function gives back a string array list
+     * 
+     * @param request_list it is requesting which list to give back
+     * @return returns a string array list
+     */
     public ArrayList<String> request_string(String request_list)
     {
         ArrayList<String> user_username = new ArrayList<>();
@@ -61,6 +71,13 @@ public class AccountController {
           }
     }
 
+    /**
+     * 
+     * The function returns an integer array list
+     * 
+     * @param request_list which list to get
+     * @return returns an integer array list
+     */
     public ArrayList<Integer> request_int(String request_list)
     {
         ArrayList<Integer> user_id = new ArrayList<>();
@@ -97,25 +114,84 @@ public class AccountController {
           }
     }
 
-    //TODO #3 Modify the function for it to return index number 
+    /**
+     * 
+     * Returns the index number of the username in which it can 
+     * define which user information is needed based on the index
+     * number.
+     * 
+     * @param username the username
+     * @return returns the index number from the username
+     */
     public int index_number(String username)
     {
         
         ArrayList<String> index_string = request_string("username");
-        index_string.indexOf("Steven1");
+        int where_the_index = index_string.indexOf(username);
 
-        return 0;
+        if (where_the_index == 0)
+        {
+            return 0;
+        }
+
+        else
+        {
+            return where_the_index;
+        }
+        
     }
 
-    //TODO #1 Modify the function for it to return boolean
+    /**
+     * 
+     * Checks if the username is correct
+     * 
+     * @param username the username
+     * @return returns a boolean (true or false)
+     */
     public boolean check_username(String username)
     {
+        ArrayList<String> the_users = request_string("username");
+
+        for (int i = 0; i <= the_users.size() - 1; i++)
+        {
+            if (username.equals(the_users.get(i)))
+            {
+                statement = true;
+            }
+
+            else
+            {
+                statement = false;
+            }
+        }
+
         return statement;
     }
 
-    //TODO #2 Modify the function for it to return boolean
+    /**
+     * 
+     * Checks if the password is correct
+     * 
+     * @param password the password
+     * @return returns a boolean (true or false)
+     */
     public boolean check_password(String password)
     {
+        ArrayList<String> the_users = request_string("password");
+
+        for (int i = 0; i <= the_users.size() - 1; i++)
+        {
+            if (password.equals(the_users.get(i)))
+            {
+                statement = true; 
+            }
+
+            else
+            {
+                statement = false;
+            }
+        }
+
         return statement;
     }
 
