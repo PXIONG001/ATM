@@ -125,8 +125,10 @@ public class AccountController {
      */
     public int index_number(String username)
     {
-        
+        // An array list of the username which will be to find the username's index number.
         ArrayList<String> index_string = request_string("username");
+
+        // Where the username's index number is located.
         int where_the_index = index_string.indexOf(username);
 
         if (where_the_index == 0)
