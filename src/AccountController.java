@@ -164,8 +164,10 @@ public class AccountController {
     }
 
     /**
+     *
+     * The function returns an array list of dates.
      * 
-     * @return
+     * @return Returns an arraylist of dates.
      */
     public ArrayList<Date> request_date()
     {
