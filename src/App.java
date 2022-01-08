@@ -1,6 +1,7 @@
 // import Scanner
 import java.util.*;
 
+//TODO #IMPORTANT this class will be remodified to utilize the classes for efficently.
 /**
  * Checking.java will display information on your checking
  * account and allow you to withdraw or deposit money.
