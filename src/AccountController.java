@@ -37,6 +37,7 @@ public class AccountController {
      */
     public ArrayList<String> request_string(String request_list)
     {
+        ArrayList<String> requested = new ArrayList<>();
         ArrayList<String> user_username = new ArrayList<>();
         ArrayList<String> user_password = new ArrayList<>();
         ArrayList<String> user_first_name = new ArrayList<>();
@@ -50,29 +51,33 @@ public class AccountController {
               user_last_name.add(obj.getLastName());
           }      
 
-          if (request_list.equals("username"))
+          switch(request_list)
           {
-              return user_username;
+            case "username":
+                requested = user_username;
+                break;
+
+            case "password":
+                requested =  user_password;
+                break;
+                
+            case "first name":
+                requested = user_first_name;
+                break;
+
+            case "last name":
+                requested = user_last_name;
+                break;
+
+            default:
+                break;
           }
 
-          else if (request_list.equals("password"))
-          {
-              return user_password;
-          }
-
-          else if (request_list.equals("first name"))
-          {
-              return user_first_name;
-          }
-
-          else 
-          {
-            return user_last_name;
-          }
+          return requested;
     }
 
     /**
-     * 
+     *  
      * The function returns an integer array list
      * 
      * @param request_list which list to get
@@ -80,10 +85,12 @@ public class AccountController {
      */
     public ArrayList<Integer> request_int(String request_list)
     {
+        ArrayList<Integer> requested = new ArrayList<>();
         ArrayList<Integer> user_id = new ArrayList<>();
         ArrayList<Integer> user_social_security = new ArrayList<>();
         ArrayList<Integer> user_routing_number = new ArrayList<>();
         ArrayList<Integer> user_account_number = new ArrayList<>();
+
           // for-each loop to create the array list from the accounts. 
           for (Account obj : database.connect())
           {
@@ -93,25 +100,83 @@ public class AccountController {
               user_account_number.add(obj.getAccountNumber());
           }      
 
-          if (request_list.equals("id"))
+          switch(request_list)
           {
-              return user_id;
+            case "id":
+                requested = user_id;
+                break;
+
+            case "password":
+                requested =  user_social_security;
+                break;
+                
+            case "first name":
+                requested = user_routing_number;
+                break;
+
+            case "last name":
+                requested = user_account_number;
+                break;
+
+            default:
+                break;
           }
 
-          else if (request_list.equals("social security"))
-          {
-              return user_social_security;
-          }
+          return requested;
+    }
 
-          else if (request_list.equals("routing number"))
-          {
-              return user_routing_number;
-          }
+    /**
+     * 
+     * The function returns an array list for the checking and saving's account
+     * 
+     * @param request_list the name of which array list to obtain
+     * @return returns the requested array list.
+     */
+    public ArrayList<Double> request_double(String request_list)
+    {
+        ArrayList<Double> requested = new ArrayList<>();
+        ArrayList<Double> checking_balance = new ArrayList<>();
+        ArrayList<Double> savings_balance = new ArrayList<>();
 
-          else 
+          // for-each loop to create the array list from the accounts. 
+          for (Account obj : database.connect())
           {
-            return user_account_number;
-          }
+              checking_balance.add(obj.getCheckingBalance());
+              savings_balance.add(obj.getSavingsBalance());
+          }      
+
+
+        switch(request_list)
+        {
+            case "checking account":
+                requested = checking_balance;
+                break;
+
+            case "savings account":
+                requested = savings_balance;
+                break;
+
+            default:
+                break;
+        }
+
+        return requested;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public ArrayList<Date> request_date()
+    {
+        ArrayList<Date> date = new ArrayList<>();
+
+        for (Account obj : database.connect())
+        {
+            date.add(obj.getBirthdate());
+        }
+
+        return date;
     }
 
     /**
@@ -131,14 +196,14 @@ public class AccountController {
         // Where the username's index number is located.
         int where_the_index = index_string.indexOf(username);
 
-        if (where_the_index == 0 || where_the_index == null)
+        if (index_string.contains(username))
         {
-            return 0;
+            return where_the_index;
         }
 
         else
         {
-            return where_the_index;
+            return 0;
         }
         
     }
@@ -195,5 +260,11 @@ public class AccountController {
         }
 
         return statement;
+    }
+
+    public static void main(String[] args)
+    {
+        AccountController controller = new AccountController();
+        System.out.println(controller.index_number("James"));
     }
 }

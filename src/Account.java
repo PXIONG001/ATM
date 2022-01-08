@@ -42,16 +42,18 @@ public class Account {
     // }
 
     /**
+     * Gets the ID number that was set.
      * 
-     * @return
+     * @return returns the ID
      */
     public int getID() {
         return id;
     }
 
     /**
+     * Sets the ID number of the user. 
      * 
-     * @param id
+     * @param id The ID number of the user.
      */
     public void setID(Integer id) {
         this.id = id;
@@ -59,7 +61,7 @@ public class Account {
 
     /**
      * 
-     * Getter for getting the name
+     * Getter for getting the name.
      * 
      * @return Returns the user's name
      */
