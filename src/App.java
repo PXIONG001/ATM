@@ -55,7 +55,7 @@ public class App extends AccountController
 
         if (application.check_username(check_the_username) && application.check_password(check_the_password))
         {
-            System.out.println("Welcome " + first_name.get(application.index_number(check_the_username)) + " What would you like to do today?\n");
+            System.out.println("Welcome " + first_name.get(application.index_number(check_the_username)) + " " + last_name.get(application.index_number(check_the_username)) + " What would you like to do today?\n");
             // The first continous loop for the user
             while (loop) 
             {
