@@ -11,7 +11,7 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-12-14
  */
-public class AccountController {
+public class AccountController extends Database{
 
     // Database variable
     Database database = new Database();
