@@ -21,27 +21,6 @@ public class Account {
     private double savings_balance;
 
     /**
-     * 
-     * The constructor.
-     * 
-     * @param name The user's name
-     * @param password The user's password
-     */
-    // public Account(String id, String username, String password, String birthdate, String first_name, String last_name, String social_securty, String routing_number, String account_number, String checking_balance, String savings_balance) {
-    //     this.id = id;
-    //     this.username = username;
-    //     this.password = password;
-    //     this.birthdate = birthdate;
-    //     this.first_name = first_name;
-    //     this.last_name = last_name;
-    //     this.social_security = social_securty;
-    //     this.routing_number = routing_number;
-    //     this.account_number = account_number;
-    //     this.checking_balance = checking_balance;
-    //     this.savings_balance = savings_balance;
-    // }
-
-    /**
      * Gets the ID number that was set.
      * 
      * @return returns the ID
