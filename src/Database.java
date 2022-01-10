@@ -88,4 +88,10 @@ public class Database {
 
     }
 
+    public ArrayList<Account> insert_balance_information(double money)
+    {
+        ArrayList<Account> accounts = new ArrayList<>();
+        return accounts;
+    }
+
 }
