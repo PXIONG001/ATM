@@ -88,10 +88,67 @@ public class Database {
 
     }
 
-    public ArrayList<Account> insert_balance_information(double money)
+    public void insert_balance_information(double money, String type_of_acccout, String username_accout)
     {
-        ArrayList<Account> accounts = new ArrayList<>();
-        return accounts;
+        try 
+        {
+            // INI file to access sensitive information
+            Wini ini = new Wini(new File("C:\\Users\\pengs\\.vscode\\Java-VSCode_Project\\ATM\\files\\my_INI_file.ini"));
+
+            // Connection to the data base. 
+            String url = ini.get("database", "url");
+            // The username to the database.
+            String username = ini.get("database", "username");
+            // The password to the database.
+            String password = ini.get("database", "password");
+
+            // Connector/J
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Connection to the database.
+            Connection con = DriverManager.getConnection(url, username, password);
+
+            switch(type_of_acccout)
+            {
+                case "checking account":
+                    // SQL Insert statement
+                    String query = "insert into users (Checking Balance)" + "values (?)";
+
+                    // SQL Prepared Statements
+                    PreparedStatement prepareStmt = con.prepareStatement(query);
+                    prepareStmt.setDouble(1, money);
+
+                    // To execute the SQL commands.
+                    prepareStmt.execute();
+
+                case "savings account":
+                    // SQL Insert statement
+                    String query_2 = "UPDATE users;" + "SET Checking Balance = ?" + "WHERE Username = ?";
+
+                    // SQL Prepared Statements
+                    PreparedStatement prepareStmt_2 = con.prepareStatement(query_2);
+                    prepareStmt_2.setDouble(1, money);
+                    prepareStmt_2.setString(2, username_accout);
+
+                    // To execute the SQL commands.
+                    prepareStmt_2.executeUpdate();
+            }
+
+            con.close();
+        } 
+        
+        catch (Exception e) 
+        {
+            System.err.println("Exception");
+            System.err.println(e.getMessage());
+        }
+
+        
+    }
+
+    public static void main(String[] args)
+    {
+        Database database = new Database();
+        System.out.println();
     }
 
 }

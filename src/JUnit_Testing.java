@@ -15,7 +15,8 @@ import org.junit.Test;
  * @since 2022-01-07
  */
 public class JUnit_Testing {
-    
+    // Account Controller
+
     /**
      * 
      * Checks if the account is accurate by checking
@@ -84,5 +85,14 @@ public class JUnit_Testing {
         assertNotNull(controller.request_int("account number"));
         assertNotNull(controller.request_double("checking account"));
         assertNotNull(controller.request_double("savings account"));
+    }
+
+    // Database
+    /**
+     * 
+     */
+    public void DatabaseCorrect()
+    {
+        Database database = new Database();
     }
 }
