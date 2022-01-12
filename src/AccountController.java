@@ -267,6 +267,6 @@ public class AccountController extends Database{
     public static void main(String[] args)
     {
         AccountController controller = new AccountController();
-        System.out.println(controller.index_number("James"));
+        System.out.println(controller.check_username("James"));
     }
 }
