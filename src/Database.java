@@ -1,4 +1,4 @@
-// Import ResultSet, Connection, DriverManager, and Statement.
+// Import ResultSet, Connection, DriverManager, PreparedStatement and Statement.
 import java.sql.*;
 
 // Import ArrayList.
@@ -63,13 +63,13 @@ public class Database {
                 user_account.setUsername(rs.getString("Username"));
                 user_account.setPassword(rs.getString("Password"));
                 user_account.setBirthdate(rs.getDate("Birthdate"));
-                user_account.setFirstName(rs.getString("First Name"));
-                user_account.setLastName(rs.getString("Last Name"));
-                user_account.setSocialSecurity(rs.getInt("Social Security"));
-                user_account.setRoutingNumber(rs.getInt("Routing Number"));
-                user_account.setAccountNumber(rs.getInt("Account Number"));
-                user_account.setCheckingBalance(rs.getDouble("Checking Balance"));
-                user_account.setSavingsBalance(rs.getDouble("Savings Balance"));
+                user_account.setFirstName(rs.getString("First_Name"));
+                user_account.setLastName(rs.getString("Last_Name"));
+                user_account.setSocialSecurity(rs.getInt("Social_Security"));
+                user_account.setRoutingNumber(rs.getInt("Routing_Number"));
+                user_account.setAccountNumber(rs.getInt("Account_Number"));
+                user_account.setCheckingBalance(rs.getDouble("Checking_Account"));
+                user_account.setSavingsBalance(rs.getDouble("Savings_Account"));
 
                 accounts.add(user_account);
                 
@@ -88,7 +88,7 @@ public class Database {
 
     }
 
-    public void insert_balance_information(double money, String type_of_acccout, String username_accout)
+    public void update_balance_information(double money, String type_of_acccout, String username_accout)
     {
         try 
         {
@@ -111,18 +111,20 @@ public class Database {
             {
                 case "checking account":
                     // SQL Insert statement
-                    String query = "insert into users (Checking Balance)" + "values (?)";
+                    String query = "update owners set Checking_Account=? where Username=?";
 
                     // SQL Prepared Statements
                     PreparedStatement prepareStmt = con.prepareStatement(query);
                     prepareStmt.setDouble(1, money);
+                    prepareStmt.setString(2, username_accout);
 
                     // To execute the SQL commands.
-                    prepareStmt.execute();
+                    prepareStmt.executeUpdate();
+                    break;
 
                 case "savings account":
                     // SQL Insert statement
-                    String query_2 = "UPDATE users;" + "SET Checking Balance = ?" + "WHERE Username = ?";
+                    String query_2 = "update owners set Savings_Account=? where Username=?";
 
                     // SQL Prepared Statements
                     PreparedStatement prepareStmt_2 = con.prepareStatement(query_2);
@@ -131,6 +133,11 @@ public class Database {
 
                     // To execute the SQL commands.
                     prepareStmt_2.executeUpdate();
+                    break;
+
+                default:
+                    System.out.println("Error! Type of Account was incorrect!");
+                    break;
             }
 
             con.close();
@@ -148,6 +155,7 @@ public class Database {
     public static void main(String[] args)
     {
         Database database = new Database();
+        database.update_balance_information(900.99, "checking account", "Steven1");
         System.out.println();
     }
 
