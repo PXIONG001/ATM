@@ -88,6 +88,14 @@ public class Database {
 
     }
 
+    /**
+     * 
+     * This function updates the balance of the user's checking or savings account.
+     * 
+     * @param money the money that has been changed.
+     * @param type_of_acccout if the account is checking or savings.
+     * @param username_accout the username to access the user's information.
+     */
     public void update_balance_information(double money, String type_of_acccout, String username_accout)
     {
         try 
