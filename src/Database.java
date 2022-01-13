@@ -115,6 +115,7 @@ public class Database {
             // Connection to the database.
             Connection con = DriverManager.getConnection(url, username, password);
 
+            // Switch case for which account to put the new balance in
             switch(type_of_acccout)
             {
                 case "checking account":
@@ -151,6 +152,7 @@ public class Database {
             con.close();
         } 
         
+        // Catch Exception
         catch (Exception e) 
         {
             System.err.println("Exception");
