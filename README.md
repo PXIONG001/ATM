@@ -4,6 +4,8 @@ This project is creating a ATM system that allows you to check your bank account
 ## The Structure
 I created a UML Class diagram and UML entity diagram in which I will upload them into README.md.
 
+![image](image/Analysis_User Stories.jpg)
+
 
 
 
