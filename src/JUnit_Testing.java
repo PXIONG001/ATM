@@ -87,12 +87,4 @@ public class JUnit_Testing {
         assertNotNull(controller.request_double("savings account"));
     }
 
-    // Database
-    /**
-     * 
-     */
-    public void DatabaseCorrect()
-    {
-        Database database = new Database();
-    }
 }
