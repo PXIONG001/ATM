@@ -197,9 +197,7 @@ public class App extends AccountController
                 }
 
             }
-
-
-
+            
             // Closes the scanner
             sc.close();
         }
