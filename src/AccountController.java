@@ -262,10 +262,4 @@ public class AccountController {
             return false;
         }
     }
-
-    public static void main(String[] args)
-    {
-        AccountController controller = new AccountController();
-        System.out.println(controller.check_username("Steven1"));
-    }
 }
