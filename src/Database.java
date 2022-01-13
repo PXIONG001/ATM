@@ -120,7 +120,7 @@ public class Database {
             switch(type_of_account)
             {
                 case "checking account":
-                    // SQL Insert statement
+                    // SQL Update statement
                     String query = "update owners set Checking_Account=? where Username=?";
 
                     // SQL Prepared Statements
