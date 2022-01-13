@@ -19,7 +19,7 @@ import java.io.File;
  * @since 2021-12-09
  */
 public class Database {
-    ArrayList<Account> accounts = new ArrayList<>();
+    
 
 
     /**
@@ -31,6 +31,8 @@ public class Database {
      */
     public ArrayList<Account> connect() 
     {
+        ArrayList<Account> accounts = new ArrayList<>();
+        
         // try-catch
         // Tries to execute the code.
         try {
@@ -52,6 +54,7 @@ public class Database {
             Statement stmt = con.createStatement();
             // To execute the SQL commands.
             ResultSet rs = stmt.executeQuery("select * from owners;");
+
             
             
             // Loops through the database to get the information. 
@@ -96,7 +99,7 @@ public class Database {
      * @param type_of_acccout if the account is checking or savings.
      * @param username_accout the username to access the user's information.
      */
-    public void update_balance_information(double money, String type_of_acccout, String username_accout)
+    public void update_balance_information(double money, String type_of_account, String username_account)
     {
         try 
         {
@@ -116,7 +119,7 @@ public class Database {
             Connection con = DriverManager.getConnection(url, username, password);
 
             // Switch case for which account to put the new balance in
-            switch(type_of_acccout)
+            switch(type_of_account)
             {
                 case "checking account":
                     // SQL Insert statement
@@ -125,7 +128,7 @@ public class Database {
                     // SQL Prepared Statements
                     PreparedStatement prepareStmt = con.prepareStatement(query);
                     prepareStmt.setDouble(1, money);
-                    prepareStmt.setString(2, username_accout);
+                    prepareStmt.setString(2, username_account);
 
                     // To execute the SQL commands.
                     prepareStmt.executeUpdate();
@@ -138,7 +141,7 @@ public class Database {
                     // SQL Prepared Statements
                     PreparedStatement prepareStmt_2 = con.prepareStatement(query_2);
                     prepareStmt_2.setDouble(1, money);
-                    prepareStmt_2.setString(2, username_accout);
+                    prepareStmt_2.setString(2, username_account);
 
                     // To execute the SQL commands.
                     prepareStmt_2.executeUpdate();
@@ -166,7 +169,7 @@ public class Database {
     {
         Database database = new Database();
         database.update_balance_information(900.99, "checking account", "Steven1");
-        System.out.println();
+        database.connect();
     }
 
 }
