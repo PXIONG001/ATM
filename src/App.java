@@ -25,18 +25,8 @@ public class App extends AccountController
         ArrayList<String> first_name = application.request_string("first name");
         ArrayList<String> last_name = application.request_string("last name");
 
-        // The array list variables for the integers
-        ArrayList<Integer> id = application.request_int("id");
-        ArrayList<Integer> social_security = application.request_int("social security");
-        ArrayList<Integer> routing_number = application.request_int("routing number");
-        ArrayList<Integer> account_number = application.request_int("account number");
-
-        // The array list variables for the doubles
-        ArrayList<Double> checking_account = application.request_double("checking account");
-        ArrayList<Double> savings_account = application.request_double("savings account");
-
-        // The array list variable for the dates
-        ArrayList<Date> date = application.request_date();
+        
+        
 
         // User input variable used in nest swtch cases
         String user_input_for_account;
@@ -76,6 +66,8 @@ public class App extends AccountController
                         // until they input the command: Exit.
                         while (checking_loop) 
                         {
+                            ArrayList<Double> checking_account = application.request_double("checking account");
+
                             System.out.println("What would you like to do today?\n");
                             System.out.println("1. Withdraw\n\n2. Deposit\n\n3. See Balance\n\n4. Exit\n");
                             System.out.println("Type in the number:");
@@ -93,8 +85,8 @@ public class App extends AccountController
                                     System.out.println("How much would you like to take out from your account?\n");
                                     double withdraw_amount = sc.nextDouble();
                                     double withdraw = withdraw_checking_balance - withdraw_amount;
-                                    System.out.println("You have withdrawn $" + withdraw + " from your checking account.");
-                                    checking_account.set(application.index_number(check_the_username), withdraw);
+                                    System.out.println("You have withdrawn $" + withdraw_amount + " from your checking account.");
+                                    application.updating_user_balance(withdraw, "checking account", check_the_username);
                                     break;
                                 
                                 // Deposit
@@ -102,9 +94,9 @@ public class App extends AccountController
                                     double deposit_checking_balance = checking_account.get(application.index_number(check_the_username));
                                     System.out.println("How much would you like to put in your account?\n");
                                     double deposit_amount = sc.nextDouble();
-                                    double deposit = deposit_checking_balance - deposit_amount;
-                                    System.out.println("You have deposited $" + deposit + " from your checking account.");
-                                    savings_account.set(application.index_number(check_the_username), deposit);
+                                    double deposit = deposit_checking_balance + deposit_amount;
+                                    System.out.println("You have deposited $" + deposit_amount + " from your checking account.");
+                                    application.updating_user_balance(deposit, "checking account", check_the_username);
                                     break;
         
                                 // See Balance
@@ -138,6 +130,8 @@ public class App extends AccountController
                         // until they input the command: Exit.
                         while (savings_loop) 
                         {
+                            ArrayList<Double> savings_account = application.request_double("savings account");
+
                             System.out.println("What would you like to do today?\n");
                             System.out.println("1. Withdraw\n\n2. Deposit\n\n3. See Balance\n\n4. Exit\n");
                             System.out.println("Type in the number:");
@@ -150,17 +144,28 @@ public class App extends AccountController
                             {
                                 // Withdraw
                                 case "1":
-                                    
+                                    double withdraw_savings_balance = savings_account.get(application.index_number(check_the_username));
+                                    System.out.println("How much would you like to take out from your account?\n");
+                                    double withdraw_amount = sc.nextDouble();
+                                    double withdraw = withdraw_savings_balance - withdraw_amount;
+                                    System.out.println("You have withdrawn $" + withdraw_amount + " from your checking account.");
+                                    application.updating_user_balance(withdraw, "savings account", check_the_username);
                                     break;
-        
+                                
                                 // Deposit
                                 case "2":
-        
+                                    double deposit_savings_balance = savings_account.get(application.index_number(check_the_username));
+                                    System.out.println("How much would you like to put in your account?\n");
+                                    double deposit_amount = sc.nextDouble();
+                                    double deposit = deposit_savings_balance + deposit_amount;
+                                    System.out.println("You have deposited $" + deposit_amount + " from your checking account.");
+                                    application.updating_user_balance(deposit, "savings account", check_the_username);
                                     break;
         
                                 // See Balance
                                 case "3":
-                                    
+                                    double savings_balance = savings_account.get(application.index_number(check_the_username));
+                                    System.out.println("You have $" + savings_balance + " in your checking account.");
                                     break;
 
                                 // Exit
