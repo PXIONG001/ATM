@@ -20,8 +20,6 @@ import java.io.File;
  */
 public class Database {
     
-
-
     /**
      * 
      * The main driver to connect to the user information. 

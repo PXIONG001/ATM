@@ -13,17 +13,8 @@ import java.util.Date;
  */
 public class AccountController {
 
+    // Accessing the Database
     Database database = new Database();
-
-
-    // Array list for user's birthdate
-    ArrayList<Date> user_birthdate = new ArrayList<>();
-
-    // Array list for user's checking balance
-    ArrayList<Double> user_checking_balance = new ArrayList<>();
-
-    // Array list for user's saving's balance
-    ArrayList<Double> user_savings_balance = new ArrayList<>();
 
     // Boolean for login
     boolean statement = false;
@@ -214,6 +205,14 @@ public class AccountController {
         
     }
 
+    /**
+     * 
+     * This function updates the balance of the checking or savings account.
+     * 
+     * @param money
+     * @param type_of_account
+     * @param username_account
+     */
     public void updating_user_balance(double money, String type_of_account, String username_account)
     {
         database.update_balance_information(money, type_of_account, username_account);
