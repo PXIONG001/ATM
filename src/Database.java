@@ -161,15 +161,5 @@ public class Database {
             System.err.println("Exception");
             System.err.println(e.getMessage());
         }
-
-        
     }
-
-    public static void main(String[] args)
-    {
-        Database database = new Database();
-        database.update_balance_information(900.99, "checking account", "Steven1");
-        database.connect();
-    }
-
 }
