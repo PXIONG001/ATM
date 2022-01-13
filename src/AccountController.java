@@ -11,10 +11,10 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-12-14
  */
-public class AccountController extends Database{
+public class AccountController {
 
-    // Database variable
     Database database = new Database();
+
 
     // Array list for user's birthdate
     ArrayList<Date> user_birthdate = new ArrayList<>();
@@ -103,6 +103,10 @@ public class AccountController extends Database{
           switch(request_list)
           {
             case "id":
+                for (int i = 0; i < user_id.size(); i ++)
+                {
+                    System.out.println(user_id.get(i));
+                }
                 requested = user_id;
                 break;
 
@@ -210,6 +214,11 @@ public class AccountController extends Database{
         
     }
 
+    public void updating_user_balance(double money, String type_of_account, String username_account)
+    {
+        database.update_balance_information(money, type_of_account, username_account);
+    }
+
     /**
      * 
      * Checks if the username is correct
@@ -221,20 +230,15 @@ public class AccountController extends Database{
     {
         ArrayList<String> the_users = request_string("username");
 
-        for (int i = 0; i <= the_users.size() - 1; i++)
+        if (the_users.contains(username))
         {
-            if (username.equals(the_users.get(i)))
-            {
-                statement = true;
-            }
-
-            else
-            {
-                statement = false;
-            }
+            return true;
         }
 
-        return statement;
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -246,27 +250,22 @@ public class AccountController extends Database{
      */
     public boolean check_password(String password)
     {
-        ArrayList<String> the_users = request_string("password");
+        ArrayList<String> the_passwords = request_string("password");
 
-        for (int i = 0; i <= the_users.size() - 1; i++)
+        if (the_passwords.contains(password))
         {
-            if (password.equals(the_users.get(i)))
-            {
-                statement = true; 
-            }
-
-            else
-            {
-                statement = false;
-            }
+            return true;
         }
 
-        return statement;
+        else
+        {
+            return false;
+        }
     }
 
     public static void main(String[] args)
     {
         AccountController controller = new AccountController();
-        System.out.println(controller.check_username("James"));
+        System.out.println(controller.check_username("Steven1"));
     }
 }
