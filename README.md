@@ -18,3 +18,6 @@ As I said in the beginning, the whole point of this project is to create a bank 
 I did not get a chance to explain about the database design of my bank account database. The database that I used for this project was MySQL. Let me show you a picture of it:
 ![image](https://github.com/PXIONG001/ATM/blob/master/images/Database_Picture.PNG)
 As you can see from the image, the database holds the personal information about the user in which certifies about them. The Checking and Savings account is within the same table with the user in which the program is able to retrieve from the same table.
+
+### Redundancies of the Database Deign
+I will admit that it is not the most greatest database design because I did not factor into the design of how the database would look and trying to work with MySQL. One of the biggest redundancies of this database design is having the Checking and Savings Account in the same table. To relieve this issue, we would need to create seperate tables to for both the checking and savings account. (More to come with the explanation of the new database design and a new picture as well). 
