@@ -10,6 +10,9 @@ import org.ini4j.*;
 // Import File
 import java.io.File;
 
+import java.util.Date;
+
+
 /**
  * Checking.java will display information on your checking
  * account and allow you to withdraw or deposit money.
@@ -22,10 +25,9 @@ public class Database_2 {
     
     /**
      * 
-     * The main driver to connect to the user information. 
+     * The function returns an array list of the customer information.
      * 
-     * @param args Does not take any user input.
-     * @throws Exception The exception catches if there is no class that exist, or no connection cannot be made.
+     * @return returns the array list of the customer information.
      */
     public ArrayList<Account> connect_table_customer() 
     {
@@ -80,10 +82,9 @@ public class Database_2 {
 
     /**
      * 
-     * The main driver to connect to the user information. 
+     * The function returns an array list of the customer information.
      * 
-     * @param args Does not take any user input.
-     * @throws Exception The exception catches if there is no class that exist, or no connection cannot be made.
+     * @return returns the array list of the user account information.
      */
     public ArrayList<Account> connect_table_user() 
     {
@@ -137,6 +138,12 @@ public class Database_2 {
         return accounts;
     }
 
+    /**
+     * 
+     * The function returns an array list of the customer information.
+     * 
+     * @return returns the array list of the savings information.
+     */
     public ArrayList<Account> connect_table_savings() 
     {
         ArrayList<Account> accounts = new ArrayList<>();
@@ -186,6 +193,12 @@ public class Database_2 {
         return accounts;
     }
 
+    /**
+     * 
+     * The function returns an array list of the customer information.
+     * 
+     * @return returns the array list of the checking information.
+     */
     public ArrayList<Account> connect_table_checking() 
     {
         ArrayList<Account> accounts = new ArrayList<>();
@@ -304,6 +317,32 @@ public class Database_2 {
         {
             System.err.println("Exception");
             System.err.println(e.getMessage());
+        }
+    }
+
+
+    public static void main(String[] args) {
+        
+        Database_2 database = new Database_2();
+        ArrayList<Integer> customer_id = new ArrayList<>();
+        ArrayList<String> customer_name = new ArrayList<>();
+        ArrayList<Date> customer_birthdate = new ArrayList<>();
+        ArrayList<Integer> customer_social_security = new ArrayList<>();
+
+        for (Account obj : database.connect_table_customer())
+        {
+            customer_id.add(obj.getID());
+            customer_name.add(obj.getCustomerName());
+            customer_birthdate.add(obj.getBirthdate());
+            customer_social_security.add(obj.getSocialSecurity());
+        }
+
+        for (int i = 0; i < customer_id.size(); i++)
+        {
+            System.out.println(customer_id.get(i) + "\n");
+            System.out.println(customer_name.get(i) + "\n");
+            System.out.println(customer_birthdate.get(i) + "\n");
+            System.out.println(customer_social_security.get(i) + "\n");
         }
     }
 }
