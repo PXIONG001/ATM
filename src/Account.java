@@ -12,8 +12,7 @@ public class Account {
     private String username;
     private String password;
     private Date birthdate;
-    private String first_name;
-    private String last_name;
+    private String customer_name;
     private int social_security;
     private int routing_number;
     private int account_number;
@@ -94,36 +93,12 @@ public class Account {
        this.birthdate = birthdate;
    }
 
-    /**
-    * 
-    * @return
-    */
-    public String getFirstName() {
-        return first_name;
-    }
- 
-    /**
-     * 
-     * @param first_name
-     */
-    public void setFirstName(String first_name) {
-        this.first_name = first_name;
+    public String getCustomerName() {
+        return customer_name;
     }
 
-    /**
-    * 
-    * @return
-    */
-    public String getLastName() {
-        return last_name;
-    }
- 
-    /**
-     * 
-     * @param last_name
-     */
-    public void setLastName(String last_name) {
-        this.last_name = last_name;
+    public void setCustomerName(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     /**

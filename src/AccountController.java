@@ -32,14 +32,11 @@ public class AccountController {
         ArrayList<String> user_username = new ArrayList<>();
         ArrayList<String> user_password = new ArrayList<>();
         ArrayList<String> user_first_name = new ArrayList<>();
-        ArrayList<String> user_last_name = new ArrayList<>();
           // for-each loop to create the array list from the accounts. 
           for (Account obj : database.connect())
           {
               user_username.add(obj.getUsername());
               user_password.add(obj.getPassword());
-              user_first_name.add(obj.getFirstName());
-              user_last_name.add(obj.getLastName());
           }      
 
           switch(request_list)
@@ -54,10 +51,6 @@ public class AccountController {
                 
             case "first name":
                 requested = user_first_name;
-                break;
-
-            case "last name":
-                requested = user_last_name;
                 break;
 
             default:
