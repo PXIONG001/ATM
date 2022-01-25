@@ -93,10 +93,18 @@ public class Account {
        this.birthdate = birthdate;
    }
 
+   /**
+    * 
+    * @return
+    */
     public String getCustomerName() {
         return customer_name;
     }
 
+    /**
+     * 
+     * @param customer_name
+     */
     public void setCustomerName(String customer_name) {
         this.customer_name = customer_name;
     }
