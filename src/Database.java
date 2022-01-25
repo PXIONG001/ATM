@@ -64,8 +64,6 @@ public class Database {
                 user_account.setUsername(rs.getString("Username"));
                 user_account.setPassword(rs.getString("Password"));
                 user_account.setBirthdate(rs.getDate("Birthdate"));
-                user_account.setFirstName(rs.getString("First_Name"));
-                user_account.setLastName(rs.getString("Last_Name"));
                 user_account.setSocialSecurity(rs.getInt("Social_Security"));
                 user_account.setRoutingNumber(rs.getInt("Routing_Number"));
                 user_account.setAccountNumber(rs.getInt("Account_Number"));
