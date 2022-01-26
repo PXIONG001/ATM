@@ -15,7 +15,7 @@ import java.io.File;
  * account and allow you to withdraw or deposit money.
  * 
  * @author Pengshing Xiong
- * @version 1.0
+ * @version 2.0
  * @since 2021-12-09
  */
 public class Database {
