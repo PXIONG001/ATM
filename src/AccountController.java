@@ -1,9 +1,6 @@
 // Import ArrayList
 import java.util.ArrayList;
 
-// Import Date
-import java.util.Date;
-
 /**
  * Account.java is the class for the account. 
  * 
@@ -15,6 +12,21 @@ public class AccountController extends RequestController {
 
     // Boolean for login
     boolean statement = false;
+
+    public double deposit()
+    {
+        return 0.0;
+    }
+
+    public double withdraw()
+    {
+        return 0.0;
+    }
+
+    public double see_balance()
+    {
+        return 0.0;
+    }
 
     /**
      * 
@@ -44,8 +56,6 @@ public class AccountController extends RequestController {
         }
         
     }
-
-
 
     /**
      * 
@@ -89,5 +99,15 @@ public class AccountController extends RequestController {
         {
             return false;
         }
+    }
+
+    public boolean check_checking()
+    {
+        return false;
+    }
+
+    public boolean check_savings()
+    {
+        return false;
     }
 }
