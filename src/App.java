@@ -6,7 +6,7 @@ import java.util.*;
  * account and allow you to withdraw or deposit money.
  * 
  * @author Pengshing Xiong
- * @version 1.0
+ * @version 2.0
  * @since 2021-12-09
  */
 public class App extends AccountController
@@ -55,13 +55,14 @@ public class App extends AccountController
 
         if (application.check_username(check_the_username) && application.check_password(check_the_password))
         {
-            System.out.println("Welcome " + first_name.get(application.index_number(check_the_username)) + " " + last_name.get(application.index_number(check_the_username)) + " What would you like to do today?\n");
-            
+                        
         }
 
         else
         {
             System.out.println("Incorrect username or password");
         }
+
+        sc.close();
     }
 }
