@@ -70,6 +70,8 @@ public class RequestController extends Database {
         ArrayList<Integer> routing_number = new ArrayList<>();
         ArrayList<Integer> account_number = new ArrayList<>();
 
+        ArrayList<Integer> checking_account_number = new ArrayList<>();
+
         for (Account obj : connect_table_user())
         {
             user_id.add(obj.getID());
