@@ -66,11 +66,11 @@ public class RequestController extends Database {
     public ArrayList<Integer> request_int()
     {
         ArrayList<Integer> user_id = new ArrayList<>();
-        ArrayList<Integer> social_security = new ArrayList<>();
         ArrayList<Integer> routing_number = new ArrayList<>();
         ArrayList<Integer> account_number = new ArrayList<>();
 
-        ArrayList<Integer> checking_account_number = new ArrayList<>();
+        ArrayList<Integer> check_account_number = new ArrayList<>();
+        ArrayList<Integer> check_savings_number = new ArrayList<>();
 
         for (Account obj : connect_table_user())
         {
@@ -79,9 +79,16 @@ public class RequestController extends Database {
             account_number.add(obj.getAccountNumber());
         }
 
-        for (Account obj : connect_table_customer())
+        // Get the account number for the savings account
+        for (Account obj : connect_table_savings())
         {
-            social_security.add(obj.getSocialSecurity());
+            check_savings_number.add(obj.getAccountNumber());
+        }
+
+        // Get the account number for the checking account
+        for (Account obj : connect_table_checking())
+        {
+            check_account_number.add(obj.getAccountNumber());
         }
 
         return account_number;
