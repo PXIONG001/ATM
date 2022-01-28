@@ -14,20 +14,68 @@ public class App extends AccountController
 
     /**
      * 
+     * This function access the checking account.
      * 
      */
     public void checking() 
     {
+        Scanner checking_scanner = new Scanner(System.in);
+        Boolean loop = true;
+
+        System.out.println("\nWhat would you like to do today? Enter the number or type which type of account to access\n");
+        System.out.println("(1) Deposit\n");
+        System.out.println("(2) Withdraw\n");
+        System.out.println("(3) See Balance\n");
+        System.out.println("(4) Exit\n");
+        
+        String user_input = checking_scanner.nextLine();
+
+        while (loop)
+        {
+            switch(user_input)
+            {
+                case "1":
+                case "deposit":
+                case "Deposit":
+                    deposit();
+                    break;
+    
+                case "2":
+                case "withdraw":
+                case "Withdraw":
+                    withdraw();
+                    break;
+    
+                case "3":
+                case "see balance":
+                case "See Balance":
+                    see_balance();
+                    break;
+    
+                case "4":
+                case "exit":
+                case "Exit":
+                    loop = false;
+                    break;
+    
+                default:
+                    System.out.println("Please give an input on the following listed!\n");
+                    break;
+            }
+        }
+
+        checking_scanner.close();
 
     }
     
     /**
      * 
+     * This function access the savings account.
      * 
      */
     public void savings()
     {
-
+        Scanner savings_scanner = new Scanner(System.in);
     }
     /**
      * This is the main method that will control the ATM/Banking system.
@@ -37,9 +85,6 @@ public class App extends AccountController
     public static void main(String[] args) 
     {
         App application = new App();
-
-        // User input variable used in nest swtch cases
-        String user_input_for_account;
         
         // Takes user input
         Scanner sc = new Scanner(System.in);   
@@ -55,7 +100,38 @@ public class App extends AccountController
 
         if (application.check_username(check_the_username) && application.check_password(check_the_password))
         {
-                        
+            if (application.check_checking() && application.check_savings())
+            {
+                System.out.println("\nWhich account would you like to access? Enter the number or type which type of account to access\n");
+                // Temporary Error
+                System.out.println("Savings does not work! Please use checking for testing.");
+                System.out.println("(1) Checking\n");
+                System.out.println("(2) Savings\n");
+                String user_input = sc.next();
+
+                switch(user_input)
+                {
+                    case "1":
+                    case "checking":
+                    case "Checking":
+                        application.checking();
+
+                    case "2":
+                    case "savings":
+                    case "Savings":
+                        application.savings();
+                }
+            }
+
+            else if (application.check_savings())
+            {
+                application.savings();
+            }
+
+            else
+            {
+                application.checking();
+            }
         }
 
         else
