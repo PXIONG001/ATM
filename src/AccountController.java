@@ -13,39 +13,39 @@ public class AccountController extends RequestController {
     // Boolean for login
     boolean statement = false;
 
-    public double deposit()
+    public void deposit()
     {
-        return 0.0;
+        
     }
 
-    public double withdraw()
+    public void withdraw()
     {
-        return 0.0;
+        
     }
 
-    public double see_balance()
+    public void see_balance()
     {
-        return 0.0;
+        
     }
 
     /**
      * 
-     * Returns the index number of the username in which it can 
+     * Returns the index number of the account number in which it can 
      * define which user information is needed based on the index
      * number.
      * 
      * @param username the username
      * @return returns the index number from the username
      */
-    public int index_number(String username)
+    public int index_number(int account_number)
     {
         // An array list of the username which will be to find the username's index number.
-        ArrayList<String> index_string = request_string("username");
+        ArrayList<Integer> index_int = request_int("user's account number");
 
         // Where the username's index number is located.
-        int where_the_index = index_string.indexOf(username);
+        int where_the_index = index_int.indexOf(account_number);
 
-        if (index_string.contains(username))
+        if (index_int.contains(account_number))
         {
             return where_the_index;
         }
@@ -101,13 +101,17 @@ public class AccountController extends RequestController {
         }
     }
 
-    public boolean check_checking()
+    public boolean check_checking(int the_account_number)
     {
+        ArrayList<Integer> user_account_number = request_int("user's account number");
+        ArrayList<Integer> checking_account_number = request_int("checking account number");
         return false;
     }
 
-    public boolean check_savings()
+    public boolean check_savings(int the_account_number)
     {
+        ArrayList<Integer> user_account_number = request_int("user's account number");
+        ArrayList<Integer> saving_account_number = request_int("savings account number");
         return false;
     }
 }
