@@ -101,14 +101,16 @@ public class AccountController extends RequestController {
         }
     }
 
-    public boolean check_checking(int the_account_number)
+    public boolean check_checking()
     {
         ArrayList<Integer> user_account_number = request_int("user's account number");
         ArrayList<Integer> checking_account_number = request_int("checking account number");
+
+        if (user_account_number.get(index_number(0) == checking_account_number.get()))
         return false;
     }
 
-    public boolean check_savings(int the_account_number)
+    public boolean check_savings()
     {
         ArrayList<Integer> user_account_number = request_int("user's account number");
         ArrayList<Integer> saving_account_number = request_int("savings account number");
