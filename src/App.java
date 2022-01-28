@@ -76,6 +76,8 @@ public class App extends AccountController
     public void savings()
     {
         Scanner savings_scanner = new Scanner(System.in);
+
+        savings_scanner.close();
     }
     /**
      * This is the main method that will control the ATM/Banking system.
@@ -89,8 +91,7 @@ public class App extends AccountController
         // Takes user input
         Scanner sc = new Scanner(System.in);   
 
-        // Variable is used for the first loop
-        Boolean loop = true;
+
 
         // This is the first implementation of the login. Later on, this will be modified to work with the database. 
         System.out.println("Enter your username and password! \n");
