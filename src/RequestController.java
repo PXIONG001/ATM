@@ -104,6 +104,8 @@ public class RequestController extends Database {
     public ArrayList<Integer> request_int(String request_which_list)
     {
         ArrayList<Integer> user_id = new ArrayList<>();
+        ArrayList<Integer> user_account_number = new ArrayList<>();
+
         ArrayList<Integer> check_account_number = new ArrayList<>();
         ArrayList<Integer> check_savings_number = new ArrayList<>();
 
@@ -111,6 +113,7 @@ public class RequestController extends Database {
         for (Account obj : connect_table_user())
         {
             user_id.add(obj.getID());
+            user_account_number.add(obj.getAccountNumber());
         }
 
         // Get the account number for the savings account
@@ -131,16 +134,26 @@ public class RequestController extends Database {
             return user_id;
         }
 
+        else if (request_which_list.equals("user's account number"))
+        {
+            return user_account_number;
+        }
+
         // Returns the checking account number
-        else if (request_which_list.equals("account number"))
+        else if (request_which_list.equals("checking account number"))
         {
             return check_account_number;
         }
 
         // Returns the savings account number
-        else
+        else if (request_which_list.equals("savings account number"))
         {
             return check_savings_number;
+        }
+
+        else 
+        {
+            return null;
         }
     }
 
