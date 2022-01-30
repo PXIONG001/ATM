@@ -37,15 +37,15 @@ public class AccountController extends RequestController {
      * @param username the username
      * @return returns the index number from the username
      */
-    public int index_number(int account_number)
+    public int index_number(String username)
     {
         // An array list of the username which will be to find the username's index number.
-        ArrayList<Integer> index_int = request_int("user's account number");
+        ArrayList<String> index_int = request_string("username");
 
         // Where the username's index number is located.
-        int where_the_index = index_int.indexOf(account_number);
+        int where_the_index = index_int.indexOf(username));
 
-        if (index_int.contains(account_number))
+        if (index_int.contains(username))
         {
             return where_the_index;
         }
@@ -55,6 +55,12 @@ public class AccountController extends RequestController {
             return 0;
         }
         
+    }
+
+    public int get_account_number()
+    {
+        
+        return 0;
     }
 
     /**
@@ -101,12 +107,11 @@ public class AccountController extends RequestController {
         }
     }
 
-    public boolean check_checking()
+    public boolean check_checking(int account_number)
     {
-        ArrayList<Integer> user_account_number = request_int("user's account number");
         ArrayList<Integer> checking_account_number = request_int("checking account number");
 
-        if (user_account_number.get(index_number(0)) == checking_account_number.get(0))
+        if (checking_account_number.contains(account_number))
         {
             return true;
         }
