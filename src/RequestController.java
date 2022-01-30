@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * RequestController requests the data from the database, 
+ * RequestController requests the data from the database
  * 
  * @author Pengshing Xiong
  * @version 1.0
