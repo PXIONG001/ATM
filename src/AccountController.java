@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 
 /**
- * Account.java is the class for the account. 
+ * AccountController.java is the controller.
  * 
  * @author Pengshing Xiong
  * @version 1.0
@@ -13,19 +13,40 @@ public class AccountController extends RequestController {
     // Boolean for login
     boolean statement = false;
 
+    /**
+     * 
+     * The deposit function allows the user to deposit from which 
+     * account they want to deposit.
+     * 
+     */
     public void deposit()
     {
-        
+        ArrayList<Double> checking = request_double("checking account");
+        ArrayList<Double> savings = request_double("savings account");
     }
 
+    /**
+     * 
+     * The withdraw function allows the user to withdraw money from which
+     * account they want to withdraw.
+     * 
+     */
     public void withdraw()
     {
-        
+        ArrayList<Double> checking = request_double("checking account");
+        ArrayList<Double> savings = request_double("savings account");
     }
 
+    /**
+     * 
+     * The see_balance function shows the balance of which account the 
+     * users choose.
+     * 
+     */
     public void see_balance()
     {
-        
+        ArrayList<Double> checking = request_double("checking account");
+        ArrayList<Double> savings = request_double("savings account");
     }
 
     /**
