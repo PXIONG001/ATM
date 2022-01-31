@@ -115,12 +115,12 @@ public class AccountController extends RequestController {
         }
     }
 
-    public boolean check_checking(int account_number, String username)
+    public boolean check_checking(String username)
     {
         ArrayList<Integer> checking_account_number = request_int("checking account number");
         int user_account = get_account_number(username);
 
-        if (checking_account_number.contains(account_number))
+        if (checking_account_number.contains(user_account))
         {
             return true;
         }
@@ -131,10 +131,19 @@ public class AccountController extends RequestController {
         }
     }
 
-    public boolean check_savings()
+    public boolean check_savings(String username)
     {
-        ArrayList<Integer> user_account_number = request_int("user's account number");
-        ArrayList<Integer> saving_account_number = request_int("savings account number");
-        return false;
+        ArrayList<Integer> savings_account_number = request_int("savings account number");
+        int user_account = get_account_number(username);
+
+        if (savings_account_number.contains(user_account))
+        {
+            return true;
+        }
+        
+        else
+        {
+            return false;
+        }
     }
 }
