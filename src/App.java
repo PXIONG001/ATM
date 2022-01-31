@@ -101,7 +101,7 @@ public class App extends AccountController
 
         if (application.check_username(check_the_username) && application.check_password(check_the_password))
         {
-            if (application.check_checking(0) && application.check_savings())
+            if (application.check_checking(check_the_username) && application.check_savings(check_the_username))
             {
                 System.out.println("\nWhich account would you like to access? Enter the number or type which type of account to access\n");
                 // Temporary Error
@@ -124,7 +124,7 @@ public class App extends AccountController
                 }
             }
 
-            else if (application.check_savings())
+            else if (application.check_savings(check_the_username))
             {
                 application.savings();
             }
