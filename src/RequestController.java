@@ -51,10 +51,10 @@ public class RequestController extends Database {
             return password;
         }
 
-        // Returns the array list of the username
+        // Returns the array list of the customer's name
         else
         {
-            return username;
+            return customer_name;
         }
     }
 
