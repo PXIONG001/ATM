@@ -39,7 +39,7 @@ public class App extends AccountController
                 case "Deposit":
                     System.out.println("How much would you like to deposit in your account?\n");
                     double deposit_amount = checking_scanner.nextDouble();
-                    deposit(username, deposit_amount);
+                    deposit(username, "checking", deposit_amount);
                     break;
     
                 case "2":
@@ -47,7 +47,7 @@ public class App extends AccountController
                 case "Withdraw":
                     System.out.println("How much would you like to deposit in your account?\n");
                     double withdraw_amount = checking_scanner.nextDouble();
-                    withdraw(username, withdraw_amount);
+                    withdraw(username, "checking", withdraw_amount);
                     break;
     
                 case "3":
@@ -119,12 +119,12 @@ public class App extends AccountController
                     case "1":
                     case "checking":
                     case "Checking":
-                        application.checking();
+                        application.checking(check_the_username);
 
                     case "2":
                     case "savings":
                     case "Savings":
-                        application.savings();
+                        application.savings(check_the_username);
                 }
             }
 
