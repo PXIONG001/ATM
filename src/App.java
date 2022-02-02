@@ -17,7 +17,7 @@ public class App extends AccountController
      * This function access the checking account.
      * 
      */
-    public void checking() 
+    public void checking(String username) 
     {
         Scanner checking_scanner = new Scanner(System.in);
         Boolean loop = true;
@@ -37,13 +37,17 @@ public class App extends AccountController
                 case "1":
                 case "deposit":
                 case "Deposit":
-                    deposit();
+                    System.out.println("How much would you like to deposit in your account?\n");
+                    double deposit_amount = checking_scanner.nextDouble();
+                    deposit(username, deposit_amount);
                     break;
     
                 case "2":
                 case "withdraw":
                 case "Withdraw":
-                    withdraw();
+                    System.out.println("How much would you like to deposit in your account?\n");
+                    double withdraw_amount = checking_scanner.nextDouble();
+                    withdraw(username, withdraw_amount);
                     break;
     
                 case "3":
@@ -73,7 +77,7 @@ public class App extends AccountController
      * This function access the savings account.
      * 
      */
-    public void savings()
+    public void savings(String username)
     {
         Scanner savings_scanner = new Scanner(System.in);
 
@@ -126,12 +130,12 @@ public class App extends AccountController
 
             else if (application.check_savings(check_the_username))
             {
-                application.savings();
+                application.savings(check_the_username);
             }
 
             else
             {
-                application.checking();
+                application.checking(check_the_username);
             }
         }
 
