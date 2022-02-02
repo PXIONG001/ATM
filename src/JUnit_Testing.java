@@ -56,6 +56,11 @@ public class JUnit_Testing {
     }
 
 
+    /**
+     * 
+     * Tests the Calculations functions.
+     * 
+     */
     @Test
     public void Calculations_Test()
     {
@@ -69,12 +74,5 @@ public class JUnit_Testing {
         // Testing withdraw_calculations
         assertNotEquals(calculate.withdraw_calculations(700.50, 6000.50), 5370.00);
         assertTrue(calculate.withdraw_calculations(700.50, 6000.50) == 5300.00);
-    }
-
-
-    @Test
-    public void Application_Test()
-    {
-        
     }
 }
