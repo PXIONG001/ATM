@@ -19,10 +19,29 @@ public class AccountController extends RequestController {
      * account they want to deposit.
      * 
      */
-    public void deposit()
+    public void deposit(String account, double deposit_amount)
     {
-        ArrayList<Double> checking = request_double("checking account");
-        ArrayList<Double> savings = request_double("savings account");
+        Calculations calculate = new Calculations();
+        Database database = new Database();
+
+        switch(account)
+        {
+            case "checking":
+                ArrayList<Double> checking = request_double("checking account");
+                ArrayList<Integer> checking_account = request_int("checking account number");
+                int get_checing_account_number = get_account_number(account);
+                int index_of_checking_account = checking_account.indexOf(get_checing_account_number);
+                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, checking.get(index_of_checking_account)), "checking account", get_checing_account_number);
+
+
+            case "savings":
+                ArrayList<Double> savings = request_double("savings account");
+                ArrayList<Integer> savings_account = request_int("savings account number");
+                int get_savings_account_number = get_account_number(account);
+                int index_of_savings_account = savings_account.indexOf(get_savings_account_number);
+                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, savings.get(index_of_savings_account)), "savings account", get_savings_account_number);
+
+        }       
     }
 
     /**
@@ -31,10 +50,29 @@ public class AccountController extends RequestController {
      * account they want to withdraw.
      * 
      */
-    public void withdraw()
+    public void withdraw(String account, double deposit_amount)
     {
-        ArrayList<Double> checking = request_double("checking account");
-        ArrayList<Double> savings = request_double("savings account");
+        Calculations calculate = new Calculations();
+        Database database = new Database();
+
+        switch(account)
+        {
+            case "checking":
+                ArrayList<Double> checking = request_double("checking account");
+                ArrayList<Integer> checking_account = request_int("checking account number");
+                int get_checing_account_number = get_account_number(account);
+                int index_of_checking_account = checking_account.indexOf(get_checing_account_number);
+                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, checking.get(index_of_checking_account)), "checking account", get_checing_account_number);
+
+
+            case "savings":
+                ArrayList<Double> savings = request_double("savings account");
+                ArrayList<Integer> savings_account = request_int("savings account number");
+                int get_savings_account_number = get_account_number(account);
+                int index_of_savings_account = savings_account.indexOf(get_savings_account_number);
+                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, savings.get(index_of_savings_account)), "savings account", get_savings_account_number);
+
+        }       
     }
 
     /**
