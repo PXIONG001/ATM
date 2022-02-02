@@ -18,6 +18,9 @@ public class AccountController extends RequestController {
      * The deposit function allows the user to deposit from which 
      * account they want to deposit.
      * 
+     * @param username the username 
+     * @param account_type the account type
+     * @param deposit_amount the amount that the user wants to deposit
      */
     public void deposit(String username, String account_type, double deposit_amount)
     {
@@ -32,6 +35,7 @@ public class AccountController extends RequestController {
                 int get_checing_account_number = get_account_number(username);
                 int index_of_checking_account = checking_account.indexOf(get_checing_account_number);
                 database.update_balance_information(calculate.depsoit_calculations(deposit_amount, checking.get(index_of_checking_account)), "checking account", get_checing_account_number);
+                break;
 
 
             case "savings":
@@ -40,6 +44,11 @@ public class AccountController extends RequestController {
                 int get_savings_account_number = get_account_number(username);
                 int index_of_savings_account = savings_account.indexOf(get_savings_account_number);
                 database.update_balance_information(calculate.depsoit_calculations(deposit_amount, savings.get(index_of_savings_account)), "savings account", get_savings_account_number);
+                break;
+
+            default:
+                System.out.println("Account_Type could not be identified!");
+                break;
 
         }       
     }
@@ -49,8 +58,11 @@ public class AccountController extends RequestController {
      * The withdraw function allows the user to withdraw money from which
      * account they want to withdraw.
      * 
+     * @param username the username
+     * @param account_type the account type
+     * @param wtihdraw_amount the amount that the user wants to withdraw
      */
-    public void withdraw(String username, String account_type, double deposit_amount)
+    public void withdraw(String username, String account_type, double wtihdraw_amount)
     {
         Calculations calculate = new Calculations();
         Database database = new Database();
@@ -62,7 +74,8 @@ public class AccountController extends RequestController {
                 ArrayList<Integer> checking_account = request_int("checking account number");
                 int get_checing_account_number = get_account_number(username);
                 int index_of_checking_account = checking_account.indexOf(get_checing_account_number);
-                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, checking.get(index_of_checking_account)), "checking account", get_checing_account_number);
+                database.update_balance_information(calculate.withdraw_calculations(wtihdraw_amount, checking.get(index_of_checking_account)), "checking account", get_checing_account_number);
+                break;
 
 
             case "savings":
@@ -70,8 +83,12 @@ public class AccountController extends RequestController {
                 ArrayList<Integer> savings_account = request_int("savings account number");
                 int get_savings_account_number = get_account_number(username);
                 int index_of_savings_account = savings_account.indexOf(get_savings_account_number);
-                database.update_balance_information(calculate.depsoit_calculations(deposit_amount, savings.get(index_of_savings_account)), "savings account", get_savings_account_number);
+                database.update_balance_information(calculate.withdraw_calculations(wtihdraw_amount, savings.get(index_of_savings_account)), "savings account", get_savings_account_number);
+                break;
 
+            default:
+                System.out.println("Account_Type could not be identified!");
+                break;
         }       
     }
 
@@ -80,11 +97,31 @@ public class AccountController extends RequestController {
      * The see_balance function shows the balance of which account the 
      * users choose.
      * 
+     * @param username
+     * @param account_type
      */
-    public void see_balance()
+    public void see_balance(String username, String account_type)
     {
-        ArrayList<Double> checking = request_double("checking account");
-        ArrayList<Double> savings = request_double("savings account");
+        switch(account_type)
+        {
+            case "checking":
+                ArrayList<Double> checking = request_double("checking account");
+                ArrayList<Integer> checking_account = request_int("checking account number");
+                int get_checing_account_number = get_account_number(username);
+                int index_of_checking_account = checking_account.indexOf(get_checing_account_number);
+
+                System.out.println("You have $" + checking.get(index_of_checking_account) + " in your checking account.\n");
+                break;
+
+            case "savings":
+                ArrayList<Double> savings = request_double("savings account");
+                ArrayList<Integer> savings_account = request_int("savings account number");
+                int get_savings_account_number = get_account_number(username);
+                int index_of_savings_account = savings_account.indexOf(get_savings_account_number);
+
+                System.out.println("You have $" + savings.get(index_of_savings_account) + " in your savings account.\n");
+                break;
+        }
     }
 
     /**
