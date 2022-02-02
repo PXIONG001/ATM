@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -62,9 +63,18 @@ public class JUnit_Testing {
         Calculations calculate = new Calculations();
 
         // Testing depsoit_calculations
-
+        assertNotEquals(calculate.depsoit_calculations(90.12, 321236.87), 321.99);
+        assertTrue(calculate.depsoit_calculations(90.12, 321236.87) == 321326.99);
 
         // Testing withdraw_calculations
+        assertNotEquals(calculate.withdraw_calculations(700.50, 6000.50), 5370.00);
+        assertTrue(calculate.withdraw_calculations(700.50, 6000.50) == 5300.00);
     }
 
+
+    @Test
+    public void Application_Test()
+    {
+        
+    }
 }
