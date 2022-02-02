@@ -53,7 +53,7 @@ public class App extends AccountController
                 case "3":
                 case "see balance":
                 case "See Balance":
-                    see_balance();
+                    see_balance(username, "checking");
                     break;
     
                 case "4":
@@ -120,11 +120,13 @@ public class App extends AccountController
                     case "checking":
                     case "Checking":
                         application.checking(check_the_username);
+                        break;
 
                     case "2":
                     case "savings":
                     case "Savings":
                         application.savings(check_the_username);
+                        break;
                 }
             }
 
