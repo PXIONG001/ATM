@@ -80,6 +80,53 @@ public class App extends AccountController
     public void savings(String username)
     {
         Scanner savings_scanner = new Scanner(System.in);
+        Boolean loop = true;
+
+        System.out.println("\nWhat would you like to do today? Enter the number or type which type of account to access\n");
+        System.out.println("(1) Deposit\n");
+        System.out.println("(2) Withdraw\n");
+        System.out.println("(3) See Balance\n");
+        System.out.println("(4) Exit\n");
+        
+        String user_input = savings_scanner.nextLine();
+
+        while (loop)
+        {
+            switch(user_input)
+            {
+                case "1":
+                case "deposit":
+                case "Deposit":
+                    System.out.println("How much would you like to deposit in your account?\n");
+                    double deposit_amount = savings_scanner.nextDouble();
+                    deposit(username, "checking", deposit_amount);
+                    break;
+    
+                case "2":
+                case "withdraw":
+                case "Withdraw":
+                    System.out.println("How much would you like to deposit in your account?\n");
+                    double withdraw_amount = savings_scanner.nextDouble();
+                    withdraw(username, "checking", withdraw_amount);
+                    break;
+    
+                case "3":
+                case "see balance":
+                case "See Balance":
+                    see_balance(username, "checking");
+                    break;
+    
+                case "4":
+                case "exit":
+                case "Exit":
+                    loop = false;
+                    break;
+    
+                default:
+                    System.out.println("Please give an input on the following listed!\n");
+                    break;
+            }
+        }
 
         savings_scanner.close();
     }
