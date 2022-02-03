@@ -29,5 +29,11 @@ Second, let me explain the design to you. There will be four tables: table_custo
 
 # Sources
 ## Database
-- https://www.tutorialspoint.com/how-to-sql-insert-items-from-a-list-or-collection-in-to-table-using-jdbc
-- https://www.tutorialspoint.com/jdbc/jdbc-update-records.htm
+- [How to insert data from your database to an array list](https://www.tutorialspoint.com/how-to-sql-insert-items-from-a-list-or-collection-in-to-table-using-jdbc)
+- [How to update records](https://www.tutorialspoint.com/jdbc/jdbc-update-records.htm)
+
+## Tools
+- [VSCode](https://code.visualstudio.com/)
+- [Java](https://www.oracle.com/java/technologies/downloads/)
+- [JUnit Testing](https://junit.org/junit4/)
+- [Database (MySQL)](https://www.mysql.com/)
