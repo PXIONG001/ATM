@@ -1,4 +1,3 @@
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -34,8 +33,6 @@ public class JUnit_Testing {
         // Testing check_savings
         assertFalse(ac.check_savings("MJ"));
         assertTrue(ac.check_savings("Steven1"));
-
-
     }
 
     /**
